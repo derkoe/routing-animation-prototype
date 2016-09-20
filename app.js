@@ -13,7 +13,7 @@ rapModule.service('peopleService', function PeopleService($http, $state) {
     }
   }
   peopleService.loadPeople = function (gender) {
-    return $http.get('/data.json').then(function (res) {
+    return $http.get('/routing-animation-prototype/data.json').then(function (res) {
       peopleService.people = filterGender(res.data, gender);
       return peopleService.people;
     });
@@ -88,7 +88,7 @@ rapModule.controller('AppController', function ($state) {
 });
 
 rapModule.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
-  $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(false);
 
   $stateProvider.state({
     abstract: true,
