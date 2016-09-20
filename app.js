@@ -28,7 +28,9 @@ rapModule.service('peopleService', function PeopleService($http, $state) {
     });
   };
   peopleService.changeGender = function (gender) {
-    $state.go($state.current.name, { gender: gender });
+    peopleService.loadPeople(gender).then(function () {
+      $state.go($state.current.name, { gender: gender });
+    })
   }
 });
 
@@ -95,7 +97,6 @@ rapModule.config(function ($locationProvider, $stateProvider, $urlRouterProvider
     controller: SearchController,
     resolve: {
       people: ['peopleService', '$stateParams', function (peopleService, $stateParams) {
-        console.log('gender', $stateParams.gender);
         return peopleService.loadPeople($stateParams.gender || 'all');
       }]
     }
