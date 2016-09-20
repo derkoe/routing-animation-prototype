@@ -1,0 +1,6 @@
+.sv {
+  transition: all linear 0.5s;
+}
+.sv.ng-hide {
+  width: 0;
+}
