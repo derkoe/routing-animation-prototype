@@ -48,7 +48,9 @@ rapModule.component('rapCriteria', {
 });
 
 rapModule.component('rapList', {
-  template: '<h2>List</h2><ul><li ng-repeat="person in list.peopleService.people"><a href="" ng-click="list.peopleService.select(person)">{{person.name}}</a></li></ul>',
+  template: '<h2>List</h2>' +
+  '<ul><li ng-repeat="person in list.peopleService.people"><a href="" ng-click="list.peopleService.select(person)">{{person.name}}</a></li></ul>' +
+  '<button class="btn btn-primary" ui-sref="search.criteria({gender: criteria.gender})">Back to Criteria</button>',
   controller: function ListController(peopleService) {
     this.peopleService = peopleService;
   },
@@ -119,5 +121,6 @@ rapModule.config(function ($locationProvider, $stateProvider, $urlRouterProvider
     }
   });
 
+  $urlRouterProvider.when('', '/c');
   $urlRouterProvider.when('/', '/c');
 });
